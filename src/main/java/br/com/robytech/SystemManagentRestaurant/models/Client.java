@@ -44,6 +44,10 @@ public class Client {
         return dataCreation;
     }
 
+    public LocalDateTime createdClientNow() {
+        return LocalDateTime.now();
+    }
+
     public void setDataCreation(LocalDateTime dataCreation) {
         this.dataCreation = dataCreation;
     }
