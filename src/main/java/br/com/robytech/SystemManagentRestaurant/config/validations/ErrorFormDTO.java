@@ -1,10 +1,10 @@
 package br.com.robytech.SystemManagentRestaurant.config.validations;
 
-public class ErrorFormDTO {
+public class ErrorFormDto {
     private String field;
     private String errorMessage;
 
-    public ErrorFormDTO(String field, String error) {
+    public ErrorFormDto(String field, String error) {
         this.field = field;
         this.errorMessage = error;
     }

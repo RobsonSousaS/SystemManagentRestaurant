@@ -3,6 +3,7 @@ package br.com.robytech.SystemManagentRestaurant.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.robytech.SystemManagentRestaurant.dto.TabbleDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,16 +11,17 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Table {
+public class Tabble {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany
     private List<Client> clients = new ArrayList<>();
     @OneToMany
     private List<ServiceOrder> orders = new ArrayList<>();
 
-    public Table(Long id, List<Client> clients, List<ServiceOrder> orders) {
+    public Tabble(Long id, List<Client> clients, List<ServiceOrder> orders) {
         this.id = id;
         this.clients = clients;
         this.orders = orders;

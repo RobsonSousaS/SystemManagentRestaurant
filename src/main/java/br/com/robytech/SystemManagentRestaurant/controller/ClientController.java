@@ -35,7 +35,7 @@ public class ClientController {
     private ClientRepository clientRepository;
 
     @GetMapping
-    public List<ClientDto> GetClient(String name) {
+    public List<ClientDto> getClient(String name) {
         if (name == null) {
             List<Client> client = clientRepository.findAll();
             return ClientDto.converter(client);
@@ -48,7 +48,7 @@ public class ClientController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<ClientDto> CadasterClient(@RequestBody @Valid ClientForm form,
+    public ResponseEntity<ClientDto> cadasterClient(@RequestBody @Valid ClientForm form,
             UriComponentsBuilder uriBuilder) {
         Client client = form.converter();
         clientRepository.save(client);
