@@ -16,24 +16,26 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class ServiceOrder {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descriptionOrder;
     private double price;
     @OneToMany
     private List<Product> products = new ArrayList<>();
-    private int quantity;
     @Enumerated(EnumType.STRING)
     private StatusEnum status = StatusEnum.INACTIVE;
     private LocalDateTime dateCreation = LocalDateTime.now();
 
-    public ServiceOrder(Long id, String descriptionOrder, double price, List<Product> products, int quantity, StatusEnum status,
+    public ServiceOrder(Long id, Client namClient, String descriptionOrder, double price, List<Product> products,
+            StatusEnum status,
             LocalDateTime dateCreation) {
         this.id = id;
+
         this.descriptionOrder = descriptionOrder;
         this.price = price;
         this.products = products;
-        this.quantity = quantity;
+
         this.status = status;
         this.dateCreation = dateCreation;
     }
@@ -52,14 +54,6 @@ public class ServiceOrder {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public StatusEnum getStatus() {

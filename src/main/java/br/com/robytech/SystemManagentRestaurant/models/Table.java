@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Tabble {
+public class Table {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,7 +19,7 @@ public class Tabble {
     @OneToMany
     private List<ServiceOrder> orders = new ArrayList<>();
 
-    public Tabble(Long id, List<Client> clients, List<ServiceOrder> orders) {
+    public Table(Long id, List<Client> clients, List<ServiceOrder> orders) {
         this.id = id;
         this.clients = clients;
         this.orders = orders;
