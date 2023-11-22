@@ -20,7 +20,7 @@ public class Client {
     private String contact;
     @OneToMany
     private List<ServiceOrder> orders = new ArrayList<>();
-    private LocalDateTime dataCreation = LocalDateTime.now();
+    private LocalDateTime dataCreation;
 
     public Client() {
     }
@@ -29,7 +29,7 @@ public class Client {
         this.id = id;
         this.name = name;
         this.contact = contact;
-        this.dataCreation = dataCreation;
+        this.dataCreation = LocalDateTime.now();
     }
 
     public List<ServiceOrder> getOrders() {
@@ -42,10 +42,6 @@ public class Client {
 
     public LocalDateTime getDataCreation() {
         return dataCreation;
-    }
-
-    public LocalDateTime createdClientNow() {
-        return LocalDateTime.now();
     }
 
     public void setDataCreation(LocalDateTime dataCreation) {
@@ -74,6 +70,10 @@ public class Client {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public static LocalDateTime createdClientNow(Client client) {
+        return client.getDataCreation();
     }
 
 }
