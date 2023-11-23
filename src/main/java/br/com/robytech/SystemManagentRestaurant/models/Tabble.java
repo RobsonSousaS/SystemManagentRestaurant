@@ -3,7 +3,6 @@ package br.com.robytech.SystemManagentRestaurant.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.robytech.SystemManagentRestaurant.dto.TabbleDto;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +24,9 @@ public class Tabble {
         this.id = id;
         this.clients = clients;
         this.orders = orders;
+    }
+
+    public Tabble() {
     }
 
     public List<Client> getClients() {

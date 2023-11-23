@@ -30,6 +30,10 @@ public class Product {
         this.typeItem = typeItem;
     }
 
+    public Product() {
+    }
+
+
     public Long getId() {
         return id;
     }

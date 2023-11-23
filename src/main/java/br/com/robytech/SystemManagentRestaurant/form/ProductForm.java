@@ -14,13 +14,9 @@ public class ProductForm {
     @NotNull
     @NotEmpty
     private String description;
-    @NotNull
-    @NotEmpty
     private int quantity;
-    @NotNull
-    @NotEmpty
     private double price;
-   
+    private TypeItemEnum typeItem;
 
     public Long getId() {
         return id;
@@ -42,9 +38,12 @@ public class ProductForm {
         return price;
     }
 
+    public TypeItemEnum getTypeItem() {
+        return typeItem;
+    }
 
     public Product converter() {
-        return new Product(id, name, description, quantity, price, null);
+        return new Product(id, name, description, quantity, price, typeItem);
     }
 
 }

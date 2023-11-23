@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.robytech.SystemManagentRestaurant.models.Product;
+import br.com.robytech.SystemManagentRestaurant.models.enums.TypeItemEnum;
 
 public class ProductDto {
     private Long id;
@@ -11,6 +12,7 @@ public class ProductDto {
     private String description;
     private int quantity;
     private double price;
+    private TypeItemEnum typeItemEnum;
 
     public ProductDto(Product product) {
         this.id = product.getId();
@@ -18,6 +20,7 @@ public class ProductDto {
         this.description = product.getDescription();
         this.quantity = product.getQuantity();
         this.price = product.getPrice();
+        this.typeItemEnum = product.getTypeItem();
     }
 
     public Long getId() {
@@ -42,6 +45,10 @@ public class ProductDto {
 
     public static List<ProductDto> converter(List<Product> product) {
         return product.stream().map(ProductDto::new).collect(Collectors.toList());
+    }
+
+    public TypeItemEnum getTypeItemEnum() {
+        return typeItemEnum;
     }
 
 }
