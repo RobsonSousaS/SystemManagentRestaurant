@@ -20,24 +20,24 @@ public class ServiceOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descriptionOrder;
-    private double price;
+    private double totalPrice;
     @OneToMany
     private List<Product> products = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private StatusEnum status = StatusEnum.INACTIVE;
     private LocalDateTime dateCreation = LocalDateTime.now();
 
-    public ServiceOrder(Long id, Client namClient, String descriptionOrder, double price, List<Product> products,
+    public ServiceOrder(Long id, String descriptionOrder, List<Product> products,
             StatusEnum status,
             LocalDateTime dateCreation) {
         this.id = id;
-
         this.descriptionOrder = descriptionOrder;
-        this.price = price;
         this.products = products;
-
         this.status = status;
         this.dateCreation = dateCreation;
+    }
+
+    public ServiceOrder() {
     }
 
     public Long getId() {
@@ -48,12 +48,12 @@ public class ServiceOrder {
         this.id = id;
     }
 
-    public double getPrice() {
-        return price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public StatusEnum getStatus() {
@@ -86,6 +86,19 @@ public class ServiceOrder {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public void CalcTotalPrice() {
+        double total = 0.0;
+
+        for (Product product : products) {
+            total += product.getPrice();
+        }
+        this.totalPrice = total;
+    }
+
+    public LocalDateTime createdServiceOrderNow(ServiceOrder serviceOrder) {
+        return serviceOrder.getDateCreation();
     }
 
 }

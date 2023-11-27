@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.robytech.SystemManagentRestaurant.dto.DatailsTabbleDto;
 import br.com.robytech.SystemManagentRestaurant.dto.TabbleDto;
 import br.com.robytech.SystemManagentRestaurant.form.TabbleForm;
+import br.com.robytech.SystemManagentRestaurant.form.UpdateTabbleForm;
 import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 
 import br.com.robytech.SystemManagentRestaurant.repository.TabbleRepository;
@@ -54,6 +56,17 @@ public class TabbleController {
         Optional<Tabble> tabble = tabbleRepository.findById(id);
         if (tabble.isPresent()) {
             return ResponseEntity.ok(new DatailsTabbleDto(tabble.get()));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<TabbleDto> updateClient(@PathVariable Long id, @RequestBody @Valid UpdateTabbleForm form) {
+        Optional<Tabble> optional = tabbleRepository.findById(id);
+        if (optional.isPresent()) {
+            Tabble tabble = form.update(id, tabbleRepository);
+            return ResponseEntity.ok(new TabbleDto(tabble));
         }
         return ResponseEntity.notFound().build();
     }

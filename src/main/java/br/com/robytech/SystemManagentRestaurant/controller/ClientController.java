@@ -27,7 +27,7 @@ import br.com.robytech.SystemManagentRestaurant.repository.ClientRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/client")
 @Validated
 public class ClientController {
 

@@ -3,19 +3,14 @@ package br.com.robytech.SystemManagentRestaurant.form;
 import java.time.LocalDateTime;
 
 import br.com.robytech.SystemManagentRestaurant.models.Client;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-
+import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 public class ClientForm {
 
     private Long id;
-    @NotNull
-    @NotEmpty
     private String name;
-    private LocalDateTime dataCreation;
-    @NotNull
-    @NotEmpty
+    private LocalDateTime dateCreation;
     private String contact;
+    private Tabble tabble;
 
     public Long getId() {
         return id;
@@ -29,13 +24,17 @@ public class ClientForm {
         return contact;
     }
 
-    public LocalDateTime getDataCreation() {
-        return dataCreation;
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
     }
 
     public Client converter() {
 
-        return new Client(id, name, contact, dataCreation);
+        return new Client(id, name, contact, dateCreation, tabble);
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
 }

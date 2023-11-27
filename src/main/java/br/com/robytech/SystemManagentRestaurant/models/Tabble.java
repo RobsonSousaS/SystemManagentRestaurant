@@ -1,13 +1,10 @@
 package br.com.robytech.SystemManagentRestaurant.models;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Tabble {
@@ -15,38 +12,20 @@ public class Tabble {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany
-    private List<Client> clients = new ArrayList<>();
-    @OneToMany
-    private List<ServiceOrder> orders = new ArrayList<>();
+    private String numero;
+    @OneToOne
+    private Client client;
+    @OneToOne
+    private ServiceOrder order;
 
-    public Tabble(Long id, List<Client> clients, List<ServiceOrder> orders) {
+    public Tabble(Long id, String numero, Client client, ServiceOrder order) {
         this.id = id;
-        this.clients = clients;
-        this.orders = orders;
+        this.numero = numero;
+        this.client = client;
+        this.order = order;
     }
 
     public Tabble() {
-    }
-
-    public List<Client> getClients() {
-        return clients;
-    }
-
-    public void setClients(List<Client> clients) {
-        if (clients.size() <= 4) {
-            this.clients = clients;
-        } else {
-            throw new IllegalArgumentException("O limite de clientes é de 4");
-        }
-    }
-
-    public List<ServiceOrder> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<ServiceOrder> orders) {
-        this.orders = orders;
     }
 
     public Long getId() {
@@ -56,5 +35,30 @@ public class Tabble {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public ServiceOrder getOrder() {
+        return order;
+    }
+
+    public void setOrder(ServiceOrder order) {
+        this.order = order;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+    
 
 }

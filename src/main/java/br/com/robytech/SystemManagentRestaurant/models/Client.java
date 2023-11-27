@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Client {
@@ -15,24 +16,27 @@ public class Client {
     private Long id;
     private String name;
     private String contact;
-    private LocalDateTime dataCreation;
+    private LocalDateTime dateCreation;
+    @OneToOne
+    private Tabble tabble;
 
     public Client() {
     }
 
-    public Client(Long id, String name, String contact, LocalDateTime dataCreation) {
+    public Client(Long id, String name, String contact, LocalDateTime dateCreation, Tabble tabble) {
         this.id = id;
         this.name = name;
         this.contact = contact;
-        this.dataCreation = LocalDateTime.now();
+        this.dateCreation = LocalDateTime.now();
+        this.tabble = tabble;
     }
 
-    public LocalDateTime getDataCreation() {
-        return dataCreation;
+    public LocalDateTime getDateCreation() {
+        return dateCreation;
     }
 
-    public void setDataCreation(LocalDateTime dataCreation) {
-        this.dataCreation = dataCreation;
+    public void setDateCreation(LocalDateTime dateCreation) {
+        this.dateCreation = dateCreation;
     }
 
     public Long getId() {
@@ -60,7 +64,11 @@ public class Client {
     }
 
     public LocalDateTime createdClientNow(Client client) {
-        return client.getDataCreation();
+        return client.getDateCreation();
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
 }
