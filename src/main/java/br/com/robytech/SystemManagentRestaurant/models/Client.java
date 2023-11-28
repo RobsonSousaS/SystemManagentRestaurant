@@ -17,18 +17,16 @@ public class Client {
     private String name;
     private String contact;
     private LocalDateTime dateCreation;
-    @OneToOne
-    private Tabble tabble;
 
     public Client() {
     }
 
-    public Client(Long id, String name, String contact, LocalDateTime dateCreation, Tabble tabble) {
+    public Client(Long id, String name, String contact, LocalDateTime dateCreation) {
         this.id = id;
         this.name = name;
         this.contact = contact;
         this.dateCreation = LocalDateTime.now();
-        this.tabble = tabble;
+
     }
 
     public LocalDateTime getDateCreation() {
@@ -65,10 +63,6 @@ public class Client {
 
     public LocalDateTime createdClientNow(Client client) {
         return client.getDateCreation();
-    }
-
-    public Tabble getTabble() {
-        return tabble;
     }
 
 }

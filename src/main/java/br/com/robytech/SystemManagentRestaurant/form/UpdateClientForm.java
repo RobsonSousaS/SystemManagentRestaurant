@@ -1,17 +1,12 @@
 package br.com.robytech.SystemManagentRestaurant.form;
 
 import br.com.robytech.SystemManagentRestaurant.models.Client;
+import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 import br.com.robytech.SystemManagentRestaurant.repository.ClientRepository;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 
 public class UpdateClientForm {
-    @NotNull
-    @NotEmpty
-    private String name;
 
-    @NotNull
-    @NotEmpty
+    private String name;
     private String contact;
 
     public String getName() {
@@ -34,6 +29,7 @@ public class UpdateClientForm {
         Client client = clientRepository.getReferenceById(id);
         client.setName(this.name);
         client.setContact(this.contact);
+
         return client;
 
     }

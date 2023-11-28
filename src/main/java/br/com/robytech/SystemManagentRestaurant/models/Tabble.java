@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,8 +15,10 @@ public class Tabble {
     private Long id;
     private String numero;
     @OneToOne
+    @JoinColumn(name = "client_id")
     private Client client;
     @OneToOne
+    @JoinColumn(name = "service_order_id")
     private ServiceOrder order;
 
     public Tabble(Long id, String numero, Client client, ServiceOrder order) {
@@ -59,6 +62,5 @@ public class Tabble {
     public void setClient(Client client) {
         this.client = client;
     }
-    
 
 }

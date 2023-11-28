@@ -7,6 +7,7 @@ import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 public class TabbleForm {
     private long id;
     private String numero;
+    
     private Client client;
     private ServiceOrder order;
 

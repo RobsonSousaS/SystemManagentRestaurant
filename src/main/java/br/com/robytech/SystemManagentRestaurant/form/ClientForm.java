@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import br.com.robytech.SystemManagentRestaurant.models.Client;
 import br.com.robytech.SystemManagentRestaurant.models.Tabble;
+
 public class ClientForm {
 
     private Long id;
@@ -29,8 +30,7 @@ public class ClientForm {
     }
 
     public Client converter() {
-
-        return new Client(id, name, contact, dateCreation, tabble);
+        return new Client(id, name, contact, dateCreation);
     }
 
     public Tabble getTabble() {
