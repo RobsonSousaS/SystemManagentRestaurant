@@ -1,10 +1,12 @@
 package br.com.robytech.SystemManagentRestaurant.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -14,17 +16,15 @@ public class Tabble {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String numero;
+    @OneToMany
+    private List<Client> clients;
     @OneToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
-    @OneToOne
-    @JoinColumn(name = "service_order_id")
     private ServiceOrder order;
 
-    public Tabble(Long id, String numero, Client client, ServiceOrder order) {
+    public Tabble(Long id, String numero, List<Client> clients, ServiceOrder order) {
         this.id = id;
         this.numero = numero;
-        this.client = client;
+        this.clients = clients;
         this.order = order;
     }
 
@@ -51,16 +51,16 @@ public class Tabble {
         return numero;
     }
 
-    public Client getClient() {
-        return client;
-    }
-
     public void setNumero(String numero) {
         this.numero = numero;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
 }

@@ -30,11 +30,7 @@ public class ClientForm {
     }
 
     public Client converter() {
-        return new Client(id, name, contact, dateCreation);
-    }
-
-    public Tabble getTabble() {
-        return tabble;
+        return new Client(id, name, contact, dateCreation, tabble);
     }
 
 }

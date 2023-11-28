@@ -12,12 +12,14 @@ public class ClientDto {
     private String name;
     private String contact;
     private LocalDateTime dataCreation;
+    private Tabble tabble;
 
     public ClientDto(Client client) {
         this.id = client.getId();
         this.name = client.getName();
         this.contact = client.getContact();
         this.dataCreation = client.createdClientNow(client);
+        this.tabble = client.getTable();
     }
 
     public Long getId() {
@@ -34,6 +36,10 @@ public class ClientDto {
 
     public LocalDateTime getDataCreation() {
         return dataCreation;
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
     public static List<ClientDto> converter(List<Client> client) {

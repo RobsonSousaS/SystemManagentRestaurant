@@ -10,16 +10,15 @@ import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 public class TabbleDto {
     private long id;
     private String numero;
-    private Client client;
+    List<Client> clients;
     private ServiceOrder serviceOrder;
-
 
     public TabbleDto(Tabble tabble) {
         this.id = tabble.getId();
         this.numero = tabble.getNumero();
-        this.client = tabble.getClient();
+        this.clients = tabble.getClients();
         this.serviceOrder = tabble.getOrder();
-    
+
     }
 
     public long getId() {
@@ -39,8 +38,8 @@ public class TabbleDto {
         return numero;
     }
 
-    public Client getClient() {
-        return client;
+    public List<Client> getClients() {
+        return clients;
     }
 
 }

@@ -8,6 +8,7 @@ public class UpdateClientForm {
 
     private String name;
     private String contact;
+    private Tabble tabble;
 
     public String getName() {
         return name;
@@ -29,9 +30,14 @@ public class UpdateClientForm {
         Client client = clientRepository.getReferenceById(id);
         client.setName(this.name);
         client.setContact(this.contact);
+        client.setTable(this.tabble);
 
         return client;
 
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
 }
