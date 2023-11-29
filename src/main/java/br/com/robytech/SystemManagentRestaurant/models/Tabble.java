@@ -1,5 +1,6 @@
 package br.com.robytech.SystemManagentRestaurant.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -15,9 +16,12 @@ public class Tabble {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String numero;
-    @OneToMany
-    private List<Client> clients;
+
+    @OneToMany(mappedBy = "tabble")
+    private List<Client> clients = new ArrayList<>();
+
     @OneToOne
     private ServiceOrder order;
 

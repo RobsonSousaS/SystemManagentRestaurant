@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ServiceOrder {
@@ -19,22 +20,30 @@ public class ServiceOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String descriptionOrder;
     private double totalPrice;
+
     @OneToMany
     private List<Product> products = new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
     private StatusEnum status = StatusEnum.INACTIVE;
+
     private LocalDateTime dateCreation = LocalDateTime.now();
+
+    @OneToOne
+    private Tabble tabble;
 
     public ServiceOrder(Long id, String descriptionOrder, List<Product> products,
             StatusEnum status,
-            LocalDateTime dateCreation) {
+            LocalDateTime dateCreation, Tabble tabble) {
         this.id = id;
         this.descriptionOrder = descriptionOrder;
         this.products = products;
         this.status = status;
         this.dateCreation = dateCreation;
+        this.tabble = tabble;
     }
 
     public ServiceOrder() {
@@ -99,6 +108,10 @@ public class ServiceOrder {
 
     public LocalDateTime createdServiceOrderNow(ServiceOrder serviceOrder) {
         return serviceOrder.getDateCreation();
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
 }

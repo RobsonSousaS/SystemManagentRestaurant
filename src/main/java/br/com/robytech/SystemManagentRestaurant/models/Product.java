@@ -22,12 +22,14 @@ public class Product {
     private TypeItemEnum typeItem = TypeItemEnum.EMPTY;
 
     public Product(Long id, String name, String description, int quantity, double price, TypeItemEnum typeItem) {
+
         this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
         this.price = price;
         this.typeItem = typeItem;
+
     }
 
     public Product() {

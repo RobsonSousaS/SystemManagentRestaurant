@@ -53,7 +53,7 @@ public class ServiceOrderForm {
     }
 
     public ServiceOrder converter() {
-        return new ServiceOrder(id, descriptionOrder, products, status, dateCreation);
+        return new ServiceOrder(id, descriptionOrder, products, status, dateCreation, tabble);
     }
 
 }

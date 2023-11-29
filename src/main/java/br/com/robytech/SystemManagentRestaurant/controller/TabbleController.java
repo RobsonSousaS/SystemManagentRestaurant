@@ -28,7 +28,7 @@ import br.com.robytech.SystemManagentRestaurant.repository.TabbleRepository;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/table")
+@RequestMapping("/tabble")
 @Validated
 public class TabbleController {
 

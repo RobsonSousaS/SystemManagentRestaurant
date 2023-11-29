@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import br.com.robytech.SystemManagentRestaurant.models.Product;
 import br.com.robytech.SystemManagentRestaurant.models.ServiceOrder;
+import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 import br.com.robytech.SystemManagentRestaurant.models.enums.StatusEnum;
 
 public class ServiceOrderDto {
@@ -17,6 +18,7 @@ public class ServiceOrderDto {
     private List<Product> products = new ArrayList<>();
     private StatusEnum status = StatusEnum.INACTIVE;
     private LocalDateTime dateCreation = LocalDateTime.now();
+    private Tabble tabble;
 
     public ServiceOrderDto(ServiceOrder serviceOrder) {
         this.id = serviceOrder.getId();
@@ -25,6 +27,7 @@ public class ServiceOrderDto {
         this.products = serviceOrder.getProducts();
         this.status = serviceOrder.getStatus();
         this.dateCreation = serviceOrder.createdServiceOrderNow(serviceOrder);
+        this.tabble = serviceOrder.getTabble();
     }
 
     public Long getId() {
@@ -53,6 +56,10 @@ public class ServiceOrderDto {
 
     public static List<ServiceOrderDto> converter(List<ServiceOrder> serviceOrder) {
         return serviceOrder.stream().map(ServiceOrderDto::new).collect(Collectors.toList());
+    }
+
+    public Tabble getTabble() {
+        return tabble;
     }
 
 }

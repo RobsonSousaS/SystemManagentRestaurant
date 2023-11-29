@@ -14,11 +14,13 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
     private String contact;
     private LocalDateTime dateCreation;
+
     @ManyToOne
-    private Tabble table;
+    private Tabble tabble;
 
     public Client() {
     }
@@ -28,7 +30,7 @@ public class Client {
         this.name = name;
         this.contact = contact;
         this.dateCreation = LocalDateTime.now();
-        this.table = tabble;
+        this.tabble = tabble;
 
     }
 
@@ -69,12 +71,11 @@ public class Client {
     }
 
     public Tabble getTable() {
-        return table;
+        return tabble;
     }
 
     public void setTable(Tabble table) {
-        this.table = table;
+        this.tabble = table;
     }
-    
 
 }
