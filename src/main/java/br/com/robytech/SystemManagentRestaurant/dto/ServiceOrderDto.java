@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.robytech.SystemManagentRestaurant.models.Product;
 import br.com.robytech.SystemManagentRestaurant.models.ServiceOrder;
 import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 import br.com.robytech.SystemManagentRestaurant.models.enums.StatusEnum;
@@ -15,7 +14,7 @@ public class ServiceOrderDto {
     private Long id;
     private String descriptionOrder;
     private double totalPrice;
-    private List<Product> products = new ArrayList<>();
+    private List<ProductDto> products;
     private StatusEnum status = StatusEnum.INACTIVE;
     private LocalDateTime dateCreation = LocalDateTime.now();
     private Tabble tabble;
@@ -24,7 +23,8 @@ public class ServiceOrderDto {
         this.id = serviceOrder.getId();
         this.descriptionOrder = serviceOrder.getDescriptionOrder();
         this.totalPrice = serviceOrder.getTotalPrice();
-        this.products = serviceOrder.getProducts();
+        this.products = new ArrayList<>();
+        this.products.addAll(serviceOrder.getProducts().stream().map(ProductDto::new).collect(Collectors.toList()));
         this.status = serviceOrder.getStatus();
         this.dateCreation = serviceOrder.createdServiceOrderNow(serviceOrder);
         this.tabble = serviceOrder.getTabble();
@@ -42,10 +42,6 @@ public class ServiceOrderDto {
         return totalPrice;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
-
     public StatusEnum getStatus() {
         return status;
     }
@@ -60,6 +56,10 @@ public class ServiceOrderDto {
 
     public Tabble getTabble() {
         return tabble;
+    }
+
+    public List<ProductDto> getProducts() {
+        return products;
     }
 
 }

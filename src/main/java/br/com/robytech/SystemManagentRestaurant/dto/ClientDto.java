@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+
 import br.com.robytech.SystemManagentRestaurant.models.Client;
 import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 
@@ -42,8 +44,8 @@ public class ClientDto {
         return tabble;
     }
 
-    public static List<ClientDto> converter(List<Client> client) {
-        return client.stream().map(ClientDto::new).collect(Collectors.toList());
+    public static Page<ClientDto> converter(Page<Client> client) {
+        return client.map(ClientDto::new);
     }
 
 }

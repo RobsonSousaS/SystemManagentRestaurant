@@ -1,24 +1,24 @@
 package br.com.robytech.SystemManagentRestaurant.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.robytech.SystemManagentRestaurant.models.Client;
 import br.com.robytech.SystemManagentRestaurant.models.ServiceOrder;
 import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 
 public class TabbleDto {
     private long id;
     private String numero;
-    List<Client> clients;
+    List<ClientDto> clients;
     private ServiceOrder serviceOrder;
 
     public TabbleDto(Tabble tabble) {
         this.id = tabble.getId();
         this.numero = tabble.getNumero();
-        this.clients = tabble.getClients();
+        this.clients = new ArrayList<>();
+        this.clients.addAll(tabble.getClients().stream().map(ClientDto::new).collect(Collectors.toList()));
         this.serviceOrder = tabble.getOrder();
-
     }
 
     public long getId() {
@@ -38,7 +38,7 @@ public class TabbleDto {
         return numero;
     }
 
-    public List<Client> getClients() {
+    public List<ClientDto> getClients() {
         return clients;
     }
 

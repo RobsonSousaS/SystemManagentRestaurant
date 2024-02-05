@@ -40,4 +40,8 @@ public class UpdateClientForm {
         return tabble;
     }
 
+    public void setTabble(Tabble tabble) {
+        this.tabble = tabble;
+    }
+
 }

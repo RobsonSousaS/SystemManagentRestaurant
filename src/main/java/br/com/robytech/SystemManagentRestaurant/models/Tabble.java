@@ -60,6 +60,9 @@ public class Tabble {
     }
 
     public List<Client> getClients() {
+        if (clients == null) {
+            clients = new ArrayList<>();
+        }
         return clients;
     }
 
