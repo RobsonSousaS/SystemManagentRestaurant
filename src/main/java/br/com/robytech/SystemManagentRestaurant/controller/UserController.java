@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.robytech.SystemManagentRestaurant.dto.UserDto;
+
 import br.com.robytech.SystemManagentRestaurant.form.UpdateUserForm;
 import br.com.robytech.SystemManagentRestaurant.form.UserForm;
 import br.com.robytech.SystemManagentRestaurant.models.User;
@@ -45,11 +46,11 @@ public class UserController {
             UriComponentsBuilder uriBuilder) {
         User user = form.converter();
         userRepository.save(user);
-        URI uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
+        URI uri = uriBuilder.path("/user/{email}").buildAndExpand(user.getEmail()).toUri();
         return ResponseEntity.created(uri).body(new UserDto(user));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{email}")
     @Transactional
     public ResponseEntity<UserDto> updateUser(@PathVariable Long id, @RequestBody @Valid UpdateUserForm form) {
         Optional<User> optional = userRepository.findById(id);
@@ -60,7 +61,7 @@ public class UserController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{email}")
     @Transactional
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         Optional<User> optional = userRepository.findById(id);
