@@ -1,13 +1,13 @@
 package br.com.robytech.SystemManagentRestaurant.controller;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
@@ -39,15 +39,14 @@ public class ClientController {
     private ClientRepository clientRepository;
 
     @GetMapping
-    public Page<ClientDto> getClient(@RequestParam(required =  false) String name, @RequestParam int page, @RequestParam int qnt) {
+    public Page<ClientDto> getClient(@RequestParam(required =  false) String name, @PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = 20) Pageable ordering) {
 
-        Pageable pages = PageRequest.of(page, qnt);
 
         if (name == null) {
-            Page<Client> client = clientRepository.findAll(pages);
+            Page<Client> client = clientRepository.findAll(ordering);
             return ClientDto.converter(client);
         } else {
-            Page<Client> client = clientRepository.findByName(name, pages);
+            Page<Client> client = clientRepository.findByName(name, ordering);
             return ClientDto.converter(client);
         }
 

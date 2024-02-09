@@ -6,4 +6,6 @@ import br.com.robytech.SystemManagentRestaurant.models.Tabble;
 
 public interface TabbleRepository extends JpaRepository<Tabble, Long> {
 
+    Tabble getReferenceById(Long id);
+
 }

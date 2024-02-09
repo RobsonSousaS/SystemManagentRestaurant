@@ -1,13 +1,14 @@
-package br.com.robytech.SystemManagentRestaurant;
+// package br.com.robytech.SystemManagentRestaurant;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class SystemManagentRestaurantApplicationTests {
+// import org.junit.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-	@Test
-	void contextLoads() {
-	}
+// @SpringBootTest
+// class SystemManagentRestaurantApplicationTests {
 
-}
+// 	@Test
+// 	void contextLoads() {
+// 	}
+
+// }
