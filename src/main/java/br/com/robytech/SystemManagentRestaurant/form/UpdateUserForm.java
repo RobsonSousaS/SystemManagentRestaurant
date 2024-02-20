@@ -21,10 +21,10 @@ public class UpdateUserForm {
     }
 
     public User update(Long id, UserRepository userRepository) {
-        User user = userRepository.getReferencebyId(id);
+        User user = userRepository.getReferenceById(id);
         user.setName(this.getName());
         user.setEmail(this.getEmail());
-        user.setPassword(this.getPassword());
+        user.setPass(this.getPassword());
         return user;
     }
 

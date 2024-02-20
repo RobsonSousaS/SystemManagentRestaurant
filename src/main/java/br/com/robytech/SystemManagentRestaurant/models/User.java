@@ -23,40 +23,20 @@ public class User implements UserDetails {
     private Long id;
     private String name;
     private String email;
-    private String password;
+    private String pass;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Profile> profiles = new ArrayList<>();
+    
+    @SuppressWarnings("null")
+    public User(String name, String email, String pass) {
+        this.name = name;
+        this.email = email;
+        this.pass = pass;
+    }
 
     @SuppressWarnings("null")
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public User() {
     }
 
     @Override
@@ -66,7 +46,12 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.name;
+        return this.email;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.pass;
     }
 
     @Override
@@ -89,6 +74,14 @@ public class User implements UserDetails {
         return true;
     }
 
+    public List<Profile> getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(List<Profile> profiles) {
+        this.profiles = profiles;
+    }
+
     public Long getId() {
         return id;
     }
@@ -97,12 +90,28 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public List<Profile> getProfiles() {
-        return profiles;
+    public String getName() {
+        return name;
     }
 
-    public void setProfiles(List<Profile> profiles) {
-        this.profiles = profiles;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
 }

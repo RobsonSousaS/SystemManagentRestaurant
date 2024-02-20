@@ -30,7 +30,6 @@ import jakarta.validation.Valid;
 @RequestMapping("/user")
 @Validated
 public class UserController {
-
     @Autowired
     private UserRepository userRepository;
 

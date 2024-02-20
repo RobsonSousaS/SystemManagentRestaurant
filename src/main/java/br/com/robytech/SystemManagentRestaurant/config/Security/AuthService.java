@@ -2,6 +2,7 @@ package br.com.robytech.SystemManagentRestaurant.config.Security;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -13,6 +14,7 @@ import br.com.robytech.SystemManagentRestaurant.repository.UserRepository;
 @Service
 public class AuthService implements UserDetailsService {
 
+    @Autowired
     private UserRepository repository;
 
     @Override

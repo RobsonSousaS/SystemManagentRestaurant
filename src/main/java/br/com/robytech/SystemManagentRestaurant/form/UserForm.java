@@ -6,7 +6,7 @@ public class UserForm {
     private Long id;
     private String name;
     private String email;
-    private String password;
+    private String pass;
 
     public Long getId() {
         return id;
@@ -32,16 +32,16 @@ public class UserForm {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPass() {
+        return pass;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     public User converter() {
-        return new User(name, email, password);
+        return new User(name, email, pass);
     }
 
 }
